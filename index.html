@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="jJXM46Pc0GOCik9uF1XHSk">
+<head data-page-node-id="wmjIHuk0a9sWloq21UPhuS">
+<meta charset="UTF-8" data-page-node-id="nkMV7olHUIwiUD3k5XOXUK">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" data-page-node-id="mNxvdY4WQVosQmB1hXAJEK">
+<title>吵架门派测试 · 你的吵架风格是哪个武林门派</title>
+<meta name="description" content="基于戈特曼「末日四骑士」与 TKI 冲突模型的武侠趣味测评，24 题测出你的 16 门派之一" data-page-node-id="bNZmgsESETyHUzaChHMTmh">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/ma-shan-zheng@5.3.0/index.css" data-page-node-id="zM5Kh5y4kuJlHasODnCfe8">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/zhi-mang-xing@5.3.0/index.css" data-page-node-id="WhFCK3CL83k7skE9rYs5p5">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/lxgwwenkai-regular.css" data-page-node-id="IyHa3fXMsPh7arwhCA6udy">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/lxgwwenkai-bold.css" data-page-node-id="4XaTwXERZLpxz1lNbrqG21">
+<style>
+:root{
+  --paper:#f6f1e3; --card:#fdfcf5; --ink:#2e2a23; --ink2:#5f584a;
+  --teal:#4f7a6a; --deep:#3a5563; --red:#b4232a; --gold:#a67c3f; --mist:#a3987f;
+  --line:#e6dcc2;
+  --font-body:"LXGW WenKai","STKaiti","KaiTi","Kaiti SC","楷体",serif;
+  --font-brush:"Ma Shan Zheng","STKaiti","KaiTi","楷体",serif;
+  --font-cursive:"Zhi Mang Xing","STKaiti","KaiTi","楷体",serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{font-size:16px;}
+body{
+  font-family:var(--font-body);
+  background-color:var(--paper);
+  background-image:
+    radial-gradient(1100px 460px at 90% -6%, rgba(79,122,106,.10), transparent 62%),
+    radial-gradient(900px 500px at -8% 30%, rgba(58,85,99,.06), transparent 58%),
+    radial-gradient(800px 480px at 108% 82%, rgba(166,124,63,.08), transparent 60%);
+  color:var(--ink); line-height:1.85; min-height:100vh;
+}
+.wrap{max-width:620px;margin:0 auto;padding:20px 16px calc(44px + env(safe-area-inset-bottom));}
+
+/* ====== 顶部题字横额 ====== */
+.banner{position:relative;text-align:center;padding:30px 16px 0;margin-bottom:18px;overflow:hidden;}
+.banner .side{position:absolute;top:22px;writing-mode:vertical-rl;font-family:var(--font-cursive);font-size:15px;letter-spacing:7px;color:var(--teal);opacity:.9;}
+.banner .side.l{left:6px;} .banner .side.r{right:6px;color:var(--gold);}
+.banner .seal{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;font-family:var(--font-brush);
+  background:var(--red);color:#fff;border-radius:8px;font-size:26px;
+  box-shadow:0 3px 10px rgba(180,35,42,.35), inset 0 0 0 2.5px rgba(255,255,255,.3);
+  transform:rotate(-6deg);margin-bottom:12px;}
+.banner h1{font-family:var(--font-brush);font-size:40px;letter-spacing:12px;color:var(--ink);font-weight:400;}
+.banner h1 em{font-style:normal;color:var(--red);}
+.banner .sub{margin-top:6px;font-family:var(--font-cursive);font-size:19px;color:var(--teal);letter-spacing:5px;}
+.banner .mtn{display:block;width:100%;height:64px;margin-top:14px;}
+
+/* ====== 卡片 ====== */
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;
+  padding:26px 22px;box-shadow:0 4px 18px rgba(90,75,40,.09);position:relative;overflow:hidden;}
+.illu-top{display:block;width:calc(100% + 44px);margin:-26px -22px 18px;height:190px;}
+.illu-foot{display:block;width:calc(100% + 44px);margin:20px -22px -26px;height:74px;opacity:.85;}
+
+/* ====== 密令门 ====== */
+.gate-lead{text-align:center;font-family:var(--font-cursive);font-size:19px;color:var(--ink2);margin:2px 0 16px;letter-spacing:2px;}
+.gate-box{background:#fffef9;border:1.5px dashed #cfbd8f;border-radius:12px;padding:20px 18px 18px;margin-bottom:16px;position:relative;}
+.gate-title{text-align:center;font-family:var(--font-brush);font-size:25px;letter-spacing:8px;color:var(--red);margin-bottom:2px;}
+.gate-tip{text-align:center;font-size:13px;color:var(--mist);margin-bottom:15px;}
+.pwd-row{display:flex;gap:10px;}
+.pwd{flex:1;min-width:0;border:1.5px solid #d3c295;background:#fffef9;border-radius:10px;
+  padding:13px 14px;font-size:17px;letter-spacing:2px;color:var(--ink);font-family:inherit;outline:none;text-align:center;}
+.pwd:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(79,122,106,.14);}
+.gate-err{text-align:center;font-size:13.5px;color:var(--red);margin-top:12px;min-height:20px;}
+.gate-note{font-size:12.5px;color:var(--mist);text-align:center;margin-top:4px;line-height:1.8;}
+
+/* ====== 按钮 ====== */
+.btn{display:block;width:100%;border:none;cursor:pointer;font-family:var(--font-body);font-weight:700;
+  background:linear-gradient(180deg,#c03137,#a01d24);color:#fbf3df;font-size:17px;
+  letter-spacing:6px;padding:14px 16px;border-radius:12px;
+  box-shadow:0 5px 14px rgba(160,29,36,.30), inset 0 1px 0 rgba(255,255,255,.22);}
+.btn:active{transform:scale(.98);}
+.btn[disabled]{opacity:.55;}
+.btn.ghost{background:linear-gradient(180deg,#3a5563,#2e4552);box-shadow:0 5px 14px rgba(46,69,82,.30);}
+.btn.teal{background:linear-gradient(180deg,#5d8f7c,#477361);box-shadow:0 5px 14px rgba(71,115,97,.30);}
+.btn.gold{background:linear-gradient(180deg,#bb9450,#9a7434);box-shadow:0 5px 14px rgba(154,116,52,.30);}
+.btn.small{width:auto;display:inline-block;padding:9px 22px;font-size:14.5px;letter-spacing:3px;}
+
+/* ====== 答题 ====== */
+.quiz-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+.q-remain{font-size:12.5px;color:var(--gold);background:rgba(166,124,63,.10);border:1px solid rgba(166,124,63,.35);
+  border-radius:99px;padding:2px 12px;}
+.q-back{border:none;background:none;font-family:inherit;font-size:13.5px;color:var(--mist);cursor:pointer;letter-spacing:1px;padding:4px 2px;}
+.q-back:disabled{opacity:.35;}
+.progress{height:7px;background:#ece2c8;border-radius:99px;overflow:hidden;margin-bottom:18px;box-shadow:inset 0 1px 3px rgba(0,0,0,.07);}
+.progress i{display:block;height:100%;background:linear-gradient(90deg,#4f7a6a,#7ba98c);border-radius:99px;transition:width .25s;}
+.qnum{display:flex;align-items:center;gap:8px;font-family:var(--font-cursive);font-size:16px;color:var(--teal);letter-spacing:3px;margin-bottom:8px;}
+.qtext{font-size:20px;font-weight:700;margin-bottom:22px;letter-spacing:.5px;}
+.opt{display:block;width:100%;text-align:left;background:#fffef9;border:1.5px solid var(--line);
+  border-radius:12px;padding:14px 15px;font-size:15.5px;font-family:inherit;color:var(--ink);
+  margin-bottom:12px;cursor:pointer;line-height:1.65;transition:all .12s;}
+.opt:hover{border-color:#9dbfa8;}
+.opt.sel{border-color:var(--teal);background:#f0f6f1;box-shadow:0 0 0 2.5px rgba(79,122,106,.14);}
+.opt .k{display:inline-block;min-width:27px;height:27px;line-height:27px;text-align:center;background:#eef0e4;
+  border-radius:8px;font-weight:700;font-size:13px;margin-right:10px;color:#6a7a5a;}
+.opt.sel .k{background:var(--teal);color:#fff;}
+
+/* ====== 结果 ====== */
+.res-top{text-align:center;}
+.res-tag{font-family:var(--font-cursive);font-size:16px;color:var(--gold);letter-spacing:6px;margin-bottom:8px;}
+.res-hero{position:relative;margin:-26px -22px 16px;padding:34px 20px 22px;}
+.res-sect{font-family:var(--font-brush);font-size:46px;font-weight:400;letter-spacing:10px;line-height:1.3;position:relative;}
+.res-master{font-size:16px;color:var(--ink2);margin:4px 0 12px;letter-spacing:2px;position:relative;}
+.res-slogan{display:inline-block;font-family:var(--font-cursive);font-size:19px;color:#fdf3dd;background:linear-gradient(120deg,#8c1c22,#b4232a);
+  padding:9px 20px;border-radius:12px;letter-spacing:2px;margin-bottom:16px;box-shadow:0 5px 14px rgba(180,35,42,.28);position:relative;}
+.res-seal{position:absolute;top:24px;right:26px;width:50px;height:50px;background:var(--red);color:#fff;
+  border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:var(--font-brush);font-size:16px;line-height:1.25;
+  text-align:center;transform:rotate(7deg);box-shadow:0 3px 10px rgba(0,0,0,.22), inset 0 0 0 2px rgba(255,255,255,.3);
+  writing-mode:vertical-rl;letter-spacing:2px;padding:4px;z-index:2;}
+.radar-box{text-align:center;} .radar-box svg{max-width:280px;width:100%;}
+.radar-cap{text-align:center;font-size:12px;color:var(--mist);margin-top:2px;}
+.dims{margin-top:18px;}
+.dimbar{margin:9px 0;}
+.dimbar .lab{display:flex;justify-content:space-between;font-size:13px;color:var(--ink2);}
+.dimbar .bar{height:9px;background:#ece2c8;border-radius:99px;overflow:hidden;margin-top:3px;box-shadow:inset 0 1px 2px rgba(0,0,0,.05);}
+.dimbar .bar i{display:block;height:100%;background:linear-gradient(90deg,#4f7a6a,#7ba98c);border-radius:99px;}
+.sec{margin-top:26px;}
+.sec h4{font-family:var(--font-cursive);font-size:19px;color:var(--deep);letter-spacing:4px;margin-bottom:12px;display:flex;align-items:center;gap:9px;}
+.sec h4::before,.sec h4::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,#d9cb9e,transparent);}
+.move{background:#f6f3e7;border-left:3px solid var(--teal);border-radius:0 10px 10px 0;padding:10px 14px;margin-bottom:9px;font-size:14.5px;}
+.move b{color:#3d6457;}
+.sec p{font-size:14.5px;color:var(--ink2);margin-bottom:8px;}
+.science{background:#eef4ee;border:1px solid #c9ddc9;border-radius:12px;padding:15px 17px;font-size:13.8px;color:#3f5a44;line-height:1.9;}
+.science b{color:#245231;}
+.sharetext{background:#fdf7e4;border:1px dashed #d8b96a;border-radius:12px;padding:14px 16px;font-size:14px;color:#7a5b1e;}
+.btnrow{display:flex;gap:10px;margin-top:26px;flex-wrap:wrap;}
+.btnrow .btn{flex:1;min-width:130px;letter-spacing:3px;font-size:15.5px;padding:13px 8px;}
+.footnote{text-align:center;font-size:12px;color:#b3a68b;margin-top:28px;letter-spacing:1px;line-height:1.8;}
+.footnote .fn-seal{font-family:var(--font-cursive);font-size:15px;color:var(--teal);display:block;margin-bottom:4px;letter-spacing:3px;}
+
+/* ====== 弹窗 ====== */
+.mask{position:fixed;inset:0;background:rgba(46,42,35,.58);display:none;align-items:center;justify-content:center;z-index:60;padding:22px;}
+.mask.show{display:flex;}
+.modal{background:var(--card);border-radius:16px;max-width:400px;width:100%;padding:30px 24px 24px;text-align:center;
+  border:1px solid #d9cb9e;box-shadow:0 10px 40px rgba(0,0,0,.30);position:relative;overflow:hidden;}
+.modal::before{content:"";position:absolute;inset:6px;border:1px dashed #d9cb9e;border-radius:11px;pointer-events:none;}
+.modal .m-title{font-family:var(--font-brush);font-size:26px;letter-spacing:8px;color:var(--red);font-weight:400;margin-bottom:4px;position:relative;}
+.modal .m-sub{font-family:var(--font-cursive);font-size:15px;color:var(--teal);margin-bottom:14px;letter-spacing:3px;position:relative;}
+.modal .m-body{font-size:15px;color:var(--ink2);line-height:2;margin-bottom:20px;position:relative;}
+.modal .m-body b{color:#8c1c22;}
+.modal .m-close{width:100%;}
+
+/* ====== 海报浮层 ====== */
+.poster-mask{position:fixed;inset:0;background:rgba(38,34,27,.88);z-index:80;display:none;flex-direction:column;align-items:center;
+  padding:20px 14px calc(24px + env(safe-area-inset-bottom));overflow:auto;}
+.poster-mask.show{display:flex;}
+.pm-tip{color:#eee2c0;font-size:14px;letter-spacing:2px;margin-bottom:12px;text-align:center;line-height:1.8;}
+.pm-img{max-width:92%;width:auto;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5);}
+.pm-close{margin-top:16px;width:200px;}
+#poster{width:750px;background:#f6f1e3;position:absolute;left:-9999px;top:0;}
+
+/* toast */
+#toast{position:fixed;left:50%;bottom:14%;transform:translateX(-50%) translateY(20px);background:rgba(46,42,35,.92);
+  color:#f3e8cc;font-size:14.5px;letter-spacing:1px;padding:11px 22px;border-radius:99px;z-index:99;
+  opacity:0;pointer-events:none;transition:all .25s;max-width:80vw;text-align:center;}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+.spin{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;
+  border-radius:50%;animation:sp .7s linear infinite;vertical-align:-2px;margin-right:6px;}
+@keyframes sp{to{transform:rotate(360deg);}}
+
+@media (max-width:420px){
+  .banner h1{font-size:31px;letter-spacing:8px;}
+  .banner .side{font-size:13px;letter-spacing:5px;}
+  .res-sect{font-size:38px;}
+  .qtext{font-size:18.5px;}
+  .btnrow .btn{min-width:110px;}
+}
+</style>
+</head>
+<body data-page-node-id="ShFa5MLCgLSnxWLTGH899g">
+<div class="wrap" data-page-node-id="R30O0QjuzDo7Wb1yDcPij7">
+
+  <!-- 顶部题字横额 -->
+  <div class="banner" id="banner" data-page-node-id="as5LoRgDQR0OYZnzSuv5GU">
+    <span class="side l" data-page-node-id="yatAFho4VpZG1a6bBbjn31">侠之大者</span><span class="side r" data-page-node-id="EDU9Oe0l1A2heHAqXncheo">出剑见心</span>
+    <div class="seal" data-page-node-id="hJmD1lZetfXCAVHRZb5vM6">武</div>
+    <h1 data-page-node-id="1S2a3yBgH0kMa2CxK402iq">吵架<em data-page-node-id="czZ8rgC2I2fTOaV9rLOUet">门派</em>测试</h1>
+    <div class="sub" data-page-node-id="XVqRkpZDYtIMqYYVBuwI2a">你的吵架风格，是哪个武林门派</div>
+    <svg class="mtn" id="bannerMtn" viewBox="0 0 620 64" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg" data-page-node-id="wK2FXQrk49qkPuRLQM8uVq"></svg>
+  </div>
+
+  <div id="app" data-page-node-id="j41cSjQXv2po9MWRiPI01M"></div>
+
+  <div class="footnote" id="footnote" data-page-node-id="SFv1v52LImpyAMAYpRsAs8">
+    <span class="fn-seal" data-page-node-id="IxOArSJ9j3Lk5ztm3LR7Fk">— 吵架门派测试 · 武林争霸 —</span>
+    基于 Gottman「末日四骑士」与 TKI 冲突模型设计<br data-page-node-id="TXKEZwCARZbg3FIjvguIYC">共 16 个门派结果 · 仅供娱乐，兼可自省
+  </div>
+</div>
+
+<!-- 好评有礼弹窗 -->
+<div class="mask" id="praiseMask" data-page-node-id="0gBwOO4DUbbav5tZpUtnE8">
+  <div class="modal" data-page-node-id="oEp8GLaGpMBV285plFE7LK">
+    <div class="m-title" data-page-node-id="rBSnOYmNOt4PVLphe2UuBA">侠 客 留 步</div>
+    <div class="m-sub" data-page-node-id="lMa83LLGC1mKxX0zJjAmrP">· 好 评 有 礼 ·</div>
+    <div class="m-body" data-page-node-id="aqexxtG72X42R2RwzkD2zN">
+      感谢少侠完成本次测评！<br data-page-node-id="4xnXEWlG7CHcHcJnSZ7QSA">
+      若觉得测试有趣，欢迎前往店铺给个<b data-page-node-id="vRYuqhGCAsYZjXKhfd7qBT">五星好评</b>～<br data-page-node-id="IZqHCnL5obo879HJiyWKc6">
+      好评后<b data-page-node-id="EXb0hGQBkX2LCSCOBByrxm">联系客服并发送好评截图</b><br data-page-node-id="AsI9Ekx786eJMpAflIhbsS">
+      即可获得 <b data-page-node-id="3GdnPXgQf3FtoaF9wLouA4">1 元返现</b>，江湖路远，感谢支持！
+    </div>
+    <button class="btn m-close" onclick="closePraise()" data-page-node-id="7LbMIeq2P2iuBlc5OWQQPD">懂 了</button>
+  </div>
+</div>
+
+<!-- 海报浮层 -->
+<div class="poster-mask" id="posterMask" data-page-node-id="RezY8o0pDE4O3b4iWxWOyy">
+  <div class="pm-tip" id="pmTip" data-page-node-id="n329cCoYhPnV8vI1XbwCU3">长按下方图片，保存到相册</div>
+  <img class="pm-img" id="pmImg" alt="吵架门派测试结果长图" data-page-node-id="KSJLmBj2Gnp5PtnlYbxMYp">
+  <button class="btn ghost pm-close" onclick="closePoster()" data-page-node-id="1lXHlRfmq8DUVRZJbUlIIk">关 闭</button>
+</div>
+
+<!-- 离屏海报画布 -->
+<div id="poster" data-page-node-id="A9y6gM157CpML05QBE3ao0"></div>
+
+<div id="toast" data-page-node-id="PGf8klUIzDnfoXffwmQQHK"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+/* ================= Supabase 配置 ================= */
+const SUPABASE_URL = "https://adrheckylzfeckdjookd.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFkcmhlY2t5bHpmZWNrZGpvb2tkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE5NDM3NzUsImV4cCI6MjEwNzUxOTc3NX0.gTP_NN7jUKDaX7qeuCRcw2rbYpv8zMZSa-kg2CNrxBY";
+let sbClient = null;
+function getSB(){
+  if(sbClient) return sbClient;
+  if(typeof supabase === "undefined" || SUPABASE_URL.indexOf("YOUR_") === 0) return null;
+  sbClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  return sbClient;
+}
+
+/* ================= 题库（24 题 · 四维 F火力/N内力/L理力/Z诛心） ================= */
+const QUESTIONS = [
+ {q:"对象第三次忘记你的忌口，当场你会：", o:[
+  ["脸当场垮下来，声音提高八度：“我说了多少次？！”","F"],
+  ["什么都不说，接下来三天对方说话你只回“嗯”","N"],
+  ["平静开口：“上周二一次，上个月一次，加这次，第三次。”","L"],
+  ["笑一下：“没事，反正我说的话在你那儿不重要。”","Z"]]},
+ {q:"微信吵架吵到一半，对方甩来一句“随便你吧”，你会：", o:[
+  ["直接连发三条59秒语音","F"],
+  ["从此开启已读不回模式","N"],
+  ["打一段逻辑严密的文字，逐条反驳","L"],
+  ["截图保存，并在心里记下一笔","Z"]]},
+ {q:"和爸妈因为“我们都是为你好”吵起来，你最可能：", o:[
+  ["摔门，嗓门一定要盖过他们","F"],
+  ["不吵了，回房间，饭也不出来吃","N"],
+  ["一条一条讲道理，试图说服他们","L"],
+  ["“行，你们对，我这辈子就这样了。”","Z"]]},
+ {q:"吵完架的当晚，你通常：", o:[
+  ["气得胸口发闷，拉朋友狂喷两小时","F"],
+  ["各自玩手机到凌晨，全程零交流","N"],
+  ["躺着复盘：这件事到底是谁的问题","L"],
+  ["打开备忘录，记下对方今天说的狠话","Z"]]},
+ {q:"室友总不倒垃圾，你第一次开口会是：", o:[
+  ["“垃圾能不能倒一下？？都快臭了！”","F"],
+  ["不说话，默默把自己房门关上，顺手把他外卖放门口","N"],
+  ["排好值日表贴冰箱上，艾特所有人执行","L"],
+  ["在群里发：“有的人啊，垃圾都快长蘑菇了~”","Z"]]},
+ {q:"对象说“你要这么想，我也没办法”，你的回应：", o:[
+  ["“你什么态度？！今天把话说清楚！”","F"],
+  ["“哦。”然后三天没有主动说过一句话","N"],
+  ["“我们分析一下这句话为什么会让我多想。”","L"],
+  ["“没办法就没办法呗，你哪次有过办法。”","Z"]]},
+ {q:"朋友背后说你坏话被你知道了，你会：", o:[
+  ["直接冲去当面质问","F"],
+  ["不删也不拉黑，但从此再也不约了","N"],
+  ["先找共同朋友把来龙去脉确认清楚","L"],
+  ["下次聚会当着所有人：“听说我最近挺精彩的？”","Z"]]},
+ {q:"开会时领导把锅甩给你，当场你会：", o:[
+  ["当场怼回去：“这需求当时是您拍板的。”","F"],
+  ["什么都不说，但下周默默提了离职","N"],
+  ["甩出聊天记录和邮件，还原完整时间线","L"],
+  ["微笑说：“没事，习惯了。”——确保在场所有人都听懂了","Z"]]},
+ {q:"吵到一半你发现自己好像理亏了，你会：", o:[
+  ["音量再提高一档，气势不能输","F"],
+  ["立刻闭嘴，用沉默把话题掐死","N"],
+  ["大方承认：“这点是我错了，但你刚才也有问题。”","L"],
+  ["“行，我错行了吧，你从来没错过。”（反向拿捏）","Z"]]},
+ {q:"对象和异性的聊天记录被你看到，你会：", o:[
+  ["当场把手机拍桌上：“这人是谁？！”","F"],
+  ["不问，但接下来一周冷得像冰箱","N"],
+  ["找个平静的时间，把疑点一条条问清楚","L"],
+  ["发条朋友圈：“真羡慕有的感情，三个人也够用。”","Z"]]},
+ {q:"你吵完架消气，通常需要：", o:[
+  ["当场吼完，两小时后就饿了","F"],
+  ["三天起步，中途怎么哄都没用那种","N"],
+  ["对方把道理讲通的那一刻","L"],
+  ["看对方被戳痛的程度","Z"]]},
+ {q:"家庭群里长辈转谣言还@你，你会：", o:[
+  ["语音轰炸家庭群：“这是假的！”","F"],
+  ["退群，眼不见心不烦","N"],
+  ["甩权威链接，逐条辟谣","L"],
+  ["回一句：“您继续转，反正我的体检报告比这个真。”","Z"]]},
+ {q:"外卖洒了大半，骑手态度还差，你会：", o:[
+  ["当场吵到整个楼道都听得见","F"],
+  ["什么都不说，拉黑这家店，再也没点过","N"],
+  ["拍照留证，找平台按规则索赔","L"],
+  ["差评写小作文，句句不带脏字，句句诛心","Z"]]},
+ {q:"网友在评论区杠你，你会：", o:[
+  ["连回十条，一条比一条冲","F"],
+  ["不回，但把他主页翻了个底朝天","N"],
+  ["摆事实列数据，礼貌反杀","L"],
+  ["“急了急了，他急了。”——三个字让对方失眠","Z"]]},
+ {q:"对象连续三天晚归且没有解释，你会：", o:[
+  ["一进门就开问，越问越大声","F"],
+  ["装睡，接下来自己也连着三天晚归","N"],
+  ["坐下来认真谈：“我们需要同步一下彼此的行程。”","L"],
+  ["默默帮他收好换洗衣服，轻声说：“外面挺好的，就别回来了。”","Z"]]},
+ {q:"吵到最凶的时候，你最常说的一句是：", o:[
+  ["“你再说一遍试试？！”","F"],
+  ["“……没什么，你忙吧。”","N"],
+  ["“我们捋一捋，事情是从哪一步开始的。”","L"],
+  ["“你现在这样，跟你妈一模一样。”","Z"]]},
+ {q:"和好这件事，你倾向于：", o:[
+  ["气消了就主动找吃的，自动翻篇","F"],
+  ["等对方先低头，可以等到天荒地老","N"],
+  ["必须把问题聊透，否则等于没解决","L"],
+  ["可以和好，但账都记着，下次一起算","Z"]]},
+ {q:"你打游戏时对象在旁边刷短视频还外放，你会：", o:[
+  ["摘了耳机当场发作","F"],
+  ["默默戴上耳机，把音量调到最大，用冷暴力对抗噪音","N"],
+  ["商量规则：各戴一只耳机，互不打扰","L"],
+  ["“你放你的，我玩我的，咱俩这日子过得真热闹。”（阴阳开场）","Z"]]},
+ {q:"对象半夜发现你还没睡、在生闷气，问“怎么了”，你说：", o:[
+  ["“你还知道问我怎么了？！”","F"],
+  ["“没事。”（翻身，背对）","N"],
+  ["“白天那件事，我现在可以说了吗？”","L"],
+  ["“我要说了，你又该说我矫情了，何必呢。”","Z"]]},
+ {q:"双十一对象背着你清空了购物车，你会：", o:[
+  ["当场对账，声音传到隔壁","F"],
+  ["收起自己的快递，从此他的快递一律拒收","N"],
+  ["打开账单做同比环比分析","L"],
+  ["“没事，反正钱花在哪，爱就在哪。”","Z"]]},
+ {q:"你的吵架武器库里，最依赖的是：", o:[
+  ["音量和气势","F"],
+  ["时间——看谁耗得过谁","N"],
+  ["逻辑和证据","L"],
+  ["一句就能让对方破防的话","Z"]]},
+ {q:"朋友劝你们“算了算了”，你心里想的是：", o:[
+  ["算什么算，今天必须说清楚","F"],
+  ["算了？他还没道歉呢，就想算了？","N"],
+  ["不能算了，问题不解决下次还犯","L"],
+  ["行，表面算了，本子上又记一笔","Z"]]},
+ {q:"吵完架对方先来道歉，你的反应是：", o:[
+  ["还有点气，但顺着台阶就下了","F"],
+  ["“嗯，知道了。”（表面平静，观察期两周起）","N"],
+  ["“道歉可以，但我们要复盘一下起因。”","L"],
+  ["“这已经是今年第几次道歉了？我数着呢。”","Z"]]},
+ {q:"如果吵架有段位，你赢的方式是：", o:[
+  ["当场把对方吼到哑口无言","F"],
+  ["用持久冷战让对方扛不住先服软","N"],
+  ["用无可辩驳的逻辑让对方心服口服","L"],
+  ["一句话让对方当场破防，直接秒杀","Z"]]},
+];
+
+/* ================= 16 门派结果库（color = 门派水墨主色） ================= */
+const SECTS = {
+ "FLN":{name:"丐帮", color:"#a8842c", master:"帮主 · 乔峰", slogan:"真刀真枪，快意恩仇，吵完还能一起喝酒",
+  moves:[["亢龙有吼 · 当场爆发","怒气值直接拉满，音量覆盖三个房间，气势上绝不输阵。"],["打狗持久战","气头过了，账还记得，但绝不背后使阴招，明着耗。"],["降龙讲理十八掌","吵归吵，道理一条条拍在桌上，讲不过你算我输。"]],
+  kryptonite:"克星：武当 · 太极——你一拳打在棉花上，再大的火也烧不起来。",
+  weakness:"命门：火力太猛容易误伤——乔帮主的降龙十八掌，十次有三次打在自己人身上。",
+  science:"【戈特曼研究说】你属于「外显型冲突者」——情绪来得快去得快，这类人反而比冷战型更少积怨。你的风险在于「猛烈升级」（harsh startup）：开场前三分钟的火药味，决定了这场架是 10 分钟还是 3 小时。【破解】试试「软启动」——用“我”开头（“我有点难受”）代替“你”开头（“你总是”），架照样吵，伤害减半。",
+  share:"测出丐帮·乔峰：吵架当场爆发、事后照旧喝酒，从不搞背后阴招。评论区来认个同门？"},
+ "FNZ":{name:"白驼山", color:"#7c8a54", master:"西毒 · 欧阳锋", slogan:"真火夹蛇毒，伤你一时，毒你一世",
+  moves:[["灵蛇怒火","当场爆发毫不含糊，但爆发只是开始。"],["蛇毒渗骨","吵完的账，一滴一滴渗进日常，阴恻恻地凉。"],["蛤蟆诛心功","看人极准，专挑你午夜梦回想起来会痛的话说。"]],
+  kryptonite:"克星：少林 · 扫地僧——不接招、不中毒、不还手，你一身武功无处施展。",
+  weakness:"命门：白驼山的毒，最终都会回噬自己——记仇的人，先失眠的往往是自己。",
+  science:"【戈特曼研究说】你同时点亮了「批评升级」和「蔑视」两大骑士。研究追踪了 3000 对伴侣发现：【「蔑视」（翻白眼、讥讽、诛心）是离婚最强的预测指标】，比愤怒的危险度高出一个量级。你的直觉是“我说得越准，他越疼”，但对方接收到的只有“他看不起我”。【破解】把“你从来就没在乎过我”翻译成事实+感受：“那天你忘了接我，我在楼下站了四十分钟。”",
+  share:"白驼山·欧阳锋：当场真火 + 事后蛇毒，双修选手（不建议）。你身边有这位吗？"},
+ "FLZ":{name:"峨眉派", color:"#c0708a", master:"掌门 · 灭绝师太", slogan:"我吵的是道理吗？我吵的是正义",
+  moves:[["倚天连珠炮","当场开讲，语速快、音量高、火力密集。"],["峨眉九阳功","证据链完整，逻辑严密，句句在理。"],["佛光普照 · 道德压制","“我这是为你好”，站在道德高地对你降维打击。"]],
+  kryptonite:"克星：星宿派 · 丁春秋——你跟他讲道理，他跟你耍无赖，秀才遇到兵。",
+  weakness:"命门：赢了每一场道理，输了每一次关系。峨眉的剑再正，也是架在人脖子上的。",
+  science:"【戈特曼研究说】你是「正义感型冲突者」——道理都对，但【关系里的问题 69% 是永久性分歧】（性格、习惯差异），无解，只能管理。跟伴侣争对错，赢的那一方其实也在输：对方会进入「情绪淹没」（心率 > 100bpm），彻底关闭接收通道。【破解】问自己一句——「我是想赢，还是想好？」这两件事，多数时候不可兼得。",
+  share:"峨眉派·灭绝师太认证：吵架必引经据典、自带道德高地。“我吵的不是道理，是正义”——有同门吗？"},
+ "LNZ":{name:"桃花岛", color:"#4f8a70", master:"岛主 · 黄药师", slogan:"我不跟你吵，我让你自己难受",
+  moves:[["碧海潮生曲","不当面发作，但一颦一笑都让你心里发毛。"],["奇门遁甲 · 冷局","冷战布阵，你自己走进去，自己迷路。"],["弹指诛心","十天半个月，轻轻一句，精准命中你上次翻的错。"]],
+  kryptonite:"克星：神雕侠 · 杨过——情绪浓烈但全挂脸上，你布的阵他根本察觉不到，白搭。",
+  weakness:"命门：桃花岛的局，外人破不了，自己也出不来——最贵的成本是自己的心情。",
+  science:"【戈特曼研究说】「筑墙」（stonewalling，拒绝回应+冷战）出现时，【85% 的情况下是先感到「情绪淹没」的一方先筑墙】——不是不在乎，是神经系统过载后的自我保护。但对方读到的只有“他在惩罚我”。【破解】筑墙前说一句：“我现在很乱，需要 20 分钟冷静，之后我们继续聊。”——这一句话，戈特曼称为「修复尝试」，是幸福伴侣最核心的技能。",
+  share:"桃花岛·黄药师：不吵架，只布阵。家里那位是不是永远猜不到你在气什么？同岛的举手。"},
+ "FN":{name:"明教", color:"#b4642e", master:"金毛狮王 · 谢逊", slogan:"吼的时候地动山摇，记仇能记半辈子",
+  moves:[["狮子吼","爆发力天花板，邻居都知道你家在吵架。"],["七伤冷战拳","吼完转入持久冷战，动静大、周期长。"],["伤敌一千自损八百","每一场架，自己也元气大伤。"]],
+  kryptonite:"克星：古墓派 · 小龙女——你吼你的，她心如止水，狮子吼打在古墓里只有回音。",
+  weakness:"命门：七伤拳先伤己——研究显示愤怒爆发后 2 小时内心梗风险升高，吵架真的伤身。",
+  science:"【心理学研究说】「愤怒外泄+情绪反刍」的组合对身心消耗最大：爆发时交感神经全开，事后又反复回放（rumination），皮质醇持续高位。【破解】给愤怒设一个物理出口——爆发前先离开现场 20 分钟快走一圈（心率下来，理性才回得来），回来后只谈一件事，不谈一个人。",
+  share:"明教·金毛狮王：狮子吼 + 七伤冷战拳双修，每场架都地动山摇，也真的伤自己。"},
+ "FL":{name:"华山剑宗", color:"#6d84a0", master:"剑宗 · 风清扬", slogan:"一剑封喉，快、准、狠，但刀刀只对事",
+  moves:[["独孤九剑 · 找破绽","对方话音未落，你已找到逻辑漏洞，一剑点死。"],["快剑连击","语速快、信息密，普通人跟不上你的输出频率。"],["剑气分明","对事不对人，吵完剑归鞘，不搞人身攻击。"]],
+  kryptonite:"克星：慕容复——你摆事实，他“以彼之道还施彼身”，把你的原话原样还给你。",
+  weakness:"命门：剑太快，对方还来不及组织语言就已经输了——赢是赢了，人被你噎出内伤。",
+  science:"【沟通研究说】你是接近「就事论事」的健康型，但有个隐藏坑：【人在被逻辑碾压时，大脑杏仁核的反应和被物理攻击时相似】——对方“听懂了”和对方“接住了”是两回事。【破解】每次亮剑前先接一招情绪（“我知道你今天很累”），再谈事——先处理心情，再处理事情，效果翻倍。",
+  share:"华山剑宗·风清扬：吵架靠逻辑一剑封喉，从不人身攻击，但噎人指数五颗星。"},
+ "FZ":{name:"星宿派", color:"#7d6a9e", master:"老怪 · 丁春秋", slogan:"气势要足，话要阴阳，杀伤全在暗处",
+  moves:[["星宿第一时间开吵","场面必须大，气势必须足，观众必须多。"],["化功绵掌 · 阴阳句","“哟，这不是我们家大忙人吗。”杀伤力max，脏话含量0。"],["马屁与捧杀","夸你夸到全场尴尬，让你自己难受。"]],
+  kryptonite:"克星：华山剑宗——你阴阳你的，他逻辑反杀，丁春秋遇到风清扬也得闭嘴。",
+  weakness:"命门：阴阳怪气的快乐只有三秒，对方记住的却是三年。",
+  science:"【戈特曼研究说】阴阳怪气、讥讽、翻白眼，全部属于「蔑视」（contempt）——【它是末日四骑士里预测分手准确率最高的一个】，因为它传递的信息不是“我生气”，而是“我看不起你”。【破解】阴阳话出口前默数 2 秒，问自己真正想要什么——十有八九是“我想让你在意我”，那不如直接说。",
+  share:"星宿派·丁春秋：吵架全靠阴阳句，杀伤全在暗处，脏话含量为零，伤害含量爆表。"},
+ "LN":{name:"灵鹫宫", color:"#a8845a", master:"尊主 · 天山童姥", slogan:"规矩就是规矩，冷也是你自找的",
+  moves:[["生死符 · 无声冷罚","不吵不闹，一个眼神让你自己体会哪里做错了。"],["八荒六合持久战","冷战周期以周计，期间一切正常，就是不理你。"],["天山折梅手 · 讲规矩","道理和规矩都摆在那，你自己对照，错在哪。"]],
+  kryptonite:"克星：丐帮 · 乔峰——直接冲上来把话吵开，你的冷战在他那儿根本结不了冰。",
+  weakness:"命门：生死符最狠的地方，是对方都不知道中的什么毒——不沟通的惩罚，经常罚不到点上。",
+  science:"【戈特曼研究说】你把「筑墙」修炼成了主动技能。数据表明，冷战超过 24 小时后，双方对冲突起因的记忆会开始变形——【记恨的往往不是那件事，而是自己脑补的版本】。【破解】冷战开打时留一扇窗：“等你想起你哪里错了，饭在锅里。”——给对方一个台阶地图，比让他自己悟快十倍。",
+  share:"灵鹫宫·天山童姥：冷战以周计，生死符无色无味，中招的人自己都说不清哪错了。"},
+ "NZ":{name:"古墓叛徒", color:"#556a80", master:"赤练仙子 · 李莫愁", slogan:"问世间情为何物，冷暴力配诛心",
+  moves:[["赤练神冰掌","冷起来滴水成冰，一句话都不多说。"],["五毒诛心印","沉默中偶尔开口，一句就是一剑：“你和你前任挺配的。”"],["情花之毒","旧账随身携带，十年不腐，随时取用。"]],
+  kryptonite:"克星：武当 · 太极——你所有诛心的毒，他都笑呵呵地卸掉，毒不进。",
+  weakness:"命门：李莫愁的悲剧不是没爱过，是每次开口都在把人推远。",
+  science:"【依恋研究说】「回避+攻击」的组合常见于恐惧型依恋——越在乎，越用冷和刺来保护自己。【诛心话本质是一种“关系测试”】：我说这么狠的话，你还会留下吗？但测试成本极高，多测几次，再爱的人也会耗尽。【破解】把“你和你前任挺配”翻译成真话：“我刚才嫉妒了，我不太舒服。”——示弱一句，胜过毒针十根。",
+  share:"李莫愁·赤练仙子：冷暴力 + 诛心双修，毒针语录随时取用。敢不敢@你吵过架最凶的那个人来测？"},
+ "LZ":{name:"华山气宗", color:"#8a6a45", master:"君子剑 · 岳不群", slogan:"我从不吵架，我只是永远正确",
+  moves:[["紫霞神功 · 慢慢讲","从不高声，语速平稳，句句“客观”，句句扎心。"],["气宗正道 · 为你好","所有立场都包装成“为你好”，你反驳就是不懂事。"],["君子诛心剑","笑眯眯一句话：“你这个人啊，就是太敏感。”"]],
+  kryptonite:"克星：星宿派 · 丁春秋——你端着，他撒泼，君子剑对无赖，气宗当场破功。",
+  weakness:"命门：最可怕的不是吵架的人，是那个“我怎么会错”的人——江湖最怕君子剑。",
+  science:"【心理学研究说】「讲道理型控制」（用理性包装支配）是最难被识别的关系伤害——因为它披着“客观”的外衣，被压制的一方甚至说不清自己哪里不舒服。【「你太敏感了」在心理学上有个名字：煤气灯效应（gaslighting）】——让你怀疑自己的感受。【破解】每次“讲道理”前加一个动作：先复述对方的感受（“你是觉得被忽视了，对吗？”）——确认完再讲，道理才有人听。",
+  share:"华山气宗·岳不群认证：从不吵架，只是永远正确。“我这都是为你好”——谁被这句话伤过，评论区集合。"},
+ "F":{name:"神雕侠", color:"#c0703a", master:"西狂 · 杨过", slogan:"情绪来得山崩地裂，转身就能掏心掏肺",
+  moves:[["黯然销魂掌","情绪上头，一掌拍出，天地变色——但招式里全是“你快哄我”。"],["真情流露 · 当场哭","爆发到一半，发现自己是委屈不是愤怒。"],["一灯如豆 · 秒原谅","对方递个台阶，眼泪还没干就下来了。"]],
+  kryptonite:"克星：灵鹫宫 · 天山童姥——你爆发完等哄，人家冷战三个月，杨过遇到童姥，内伤。",
+  weakness:"命门：情绪是真的，杀伤也是真的——爱你的人也会被你的山崩地裂吓到。",
+  science:"【情绪研究说】你是「高情绪粒度但低调节延迟」型——感受又快又真，只是从“情绪上头”到“话说出口”的距离太短。【研究显示：情绪爆发后约 90 秒，生理峰值就会自然回落】——最难熬的就是这 90 秒。【破解】上头时先物理暂停（去倒杯水），把“你怎么这样！”换成“我现在特别难受，你听我说完”——你的真诚是天赋，配上刹车就是神器。",
+  share:"神雕侠·杨过：爆发时黯然销魂掌，三分钟后一灯如豆。情绪浓烈、心软速溶，@那个吵架哭比吼多的人。"},
+ "N":{name:"古墓派", color:"#68808c", master:"龙姑娘 · 小龙女", slogan:"我可以十年不说话，你随意",
+  moves:[["玉女心经 · 绝对安静","不吵、不骂、不解释，安静本身就是回应。"],["古墓沉默剑","你所有的话，在墓门关闭的那一刻全部失效。"],["一招“过儿你别闹”","等到你先撑不住，主动来哄。"]],
+  kryptonite:"克星：明教 · 谢逊——他吼完就完了，你的十年冷宫对他无效，白冷战。",
+  weakness:"命门：冷战的尽头经常是对方的离开——不是不在乎了，是等不动了。",
+  science:"【戈特曼研究说】追踪研究发现，【冷战方 85% 是先被“情绪淹没”的那个人】（心率飙到 100 以上，大脑自动关机）——你的沉默不是惩罚，是死机。但对方看不到你的心率，只看到冰。【破解】死机时留一句：“我不是冷暴力，我现在说不出话，给我一小时。”——同样是不说话，效果差十倍。",
+  share:"古墓派·小龙女：十年不说话的功力，安静本身就是回应。谁被冷战过，谁知道。"},
+ "L":{name:"全真教", color:"#6a8a6a", master:"重阳真人 · 王重阳", slogan:"天下武功，唯理不破",
+  moves:[["先天功 · 先听后说","对方说完，你才开始，且逐条回应。"],["全真剑阵 · 分点陈述","第一、第二、第三，条理清楚，结论明确。"],["道理在手，天下我有","不吵不闹，全程降维讲解。"]],
+  kryptonite:"克星：峨眉 · 灭绝师太——她跟你讲正义，你跟她讲逻辑，频道对不上。",
+  weakness:"命门：对方要的是一个拥抱，你递过去一份思维导图。",
+  science:"【沟通研究说】你是最接近「合作型冲突解决」的人（TKI 模型里的 Collaborating）——但注意：【情绪被接住之前，任何道理都会被判定为“你不懂我”】。【破解】在分析之前加一句情绪确认（“这事让你委屈了”），你的道理才有入场券。先通情，再达理。",
+  share:"全真教·王重阳：吵架分点陈述，第一第二第三。道理全对，就是差点人味儿。"},
+ "Z":{name:"姑苏慕容", color:"#8a5a7d", master:"公子 · 慕容复", slogan:"我不吵架，我只是让你自己打败自己",
+  moves:[["以彼之道，还施彼身","你三月份说的话，我九月份原样奉还，一字不差。"],["斗转星移 · 轻描淡写","声音不大，位置极准，专挑你最不敢面对的软肋。"],["表哥的微笑","全程体面，杀伤全在对方体内发作。"]],
+  kryptonite:"克星：丐帮 · 乔峰——你斗转星移，人家降龙十八掌硬刚，四两拨不动千斤。",
+  weakness:"命门：每一次精准诛心，都在对方心里多存一笔利息——总有一天连本带利要还。",
+  science:"【戈特曼研究说】你是「蔑视」的隐藏款大师——不吼不叫，杀伤却最大。【实验室里，蔑视（含讽刺、模仿、翻白眼）是预测关系破裂的第一指标】，因为它攻击的不是行为，是人格（“你这个人不行”）。【破解】每次想引用对方的旧话时，改成陈述此刻的事实：“上周的事我还在意”——过去时改成现在时，攻击性立刻减半。",
+  share:"姑苏慕容·慕容复：不吵架，只让你自己打败自己。以彼之道还施彼身，谁被这样对待过？"},
+ "":{name:"武当派", color:"#3f5f6e", master:"真人 · 张三丰", slogan:"阴阳平衡，百岁不争",
+  moves:[["太极 · 以柔克刚","对方火力全开，你四两拨千斤，句句卸力。"],["真武 · 化解于无形","很多架到你这儿，根本吵不起来。"],["无为而无不为","不是不敢吵，是真觉得没必要吵。"]],
+  kryptonite:"克星：华山气宗 · 岳不群——他跟你玩“为你好”，太极卸不掉温柔的刀。",
+  weakness:"命门：不吵架不代表没问题——有些架必须吵，那是关系在排淤血。",
+  science:"【冲突研究说】你是 TKI 模型里最接近「协作型」的人，但注意一个陷阱：【研究显示从不冲突的关系，满意度往往低于“会好好吵架”的关系】——回避的冲突不会消失，只会变成疏离。【破解】该出手时就出手：温和地表达不满（“这件事我确实有意见”），太极不是躲，是收放自如。",
+  share:"武当·张三丰：百年修为，百架不吵。太极卸力，万物皆空——但你确定不是憋着？"},
+ "FNLZ":{name:"日月神教", color:"#b4232a", master:"教主 · 任我行", slogan:"文武双全，冷热通吃，千秋万载，一统吵架",
+  moves:[["吸星大法","对方的火力、逻辑、旧账，全部吸收并加倍奉还。"],["全维度压制","当面爆发+持久冷战+逻辑碾压+精准诛心，四修大满贯。"],["千秋万载","文能诛心武能吼，家中吵架，一统江湖。"]],
+  kryptonite:"克星：少林 · 扫地僧——你武功再高，他扫他的地。无敌，有时是最寂寞的。",
+  weakness:"命门：全维度压制的结果，是身边慢慢没人敢跟你吵——也没人敢跟你说真话。",
+  science:"【戈特曼研究说】四骑士（批评、蔑视、防御、筑墙）你全修满级——这在实验室里是关系红灯警报组合。【但好消息是：研究同时发现，幸福伴侣与不幸伴侣的冲突频率几乎相同】，区别只在修复能力。【破解】以你的功力，把十分之一的杀伤力用来修复（主动认错+幽默破冰），江湖地位只会更高。",
+  share:"日月神教·任我行：文能诛心武能吼，吵架四修大满贯，千秋万载一统江湖。评论区还有活着的对手吗？"}
+};
+
+const DIMNAMES = {F:"火力 · 当面爆发",N:"内力 · 冷战持久",L:"理力 · 就事论事",Z:"诛心 · 翻旧账阴阳"};
+const LETTERS = ["A","B","C","D"];
+const INK = "#2e2a23";
+
+/* ================= 水墨插图（原创 SVG） ================= */
+/* 横额底部远山 */
+function bannerMtnSVG(){
+  return `<path d="M0,44 L60,26 L110,40 L170,18 L230,38 L300,24 L370,42 L440,22 L510,38 L620,28 L620,64 L0,64 Z" fill="${INK}" opacity=".10"/>
+  <path d="M0,52 L80,38 L150,50 L240,34 L330,52 L430,40 L520,54 L620,44 L620,64 L0,64 Z" fill="${INK}" opacity=".16"/>
+  <g stroke="${INK}" stroke-width="1.6" fill="none" stroke-linecap="round" opacity=".6">
+    <path d="M96,14 q4,-4 8,0 q4,-4 8,0"/><path d="M128,8 q3,-3 6,0 q3,-3 6,0"/>
+    <path d="M470,12 q4,-4 8,0 q4,-4 8,0"/>
+  </g>`;
+}
+/* 主插图：远山 + 红日 + 侠客剪影 + 云雾 + 芦苇 + 飞鸟（uid 保证渐变 id 唯一） */
+function heroSVG(uid, main, w, h, heroOpacity){
+  heroOpacity = heroOpacity===undefined ? 1 : heroOpacity;
+  return `<svg viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;display:block">
+  <defs>
+    <linearGradient id="${uid}g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${main}" stop-opacity=".10"/><stop offset="1" stop-color="${main}" stop-opacity=".42"/></linearGradient>
+    <linearGradient id="${uid}g2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${main}" stop-opacity=".24"/><stop offset="1" stop-color="${main}" stop-opacity=".6"/></linearGradient>
+    <linearGradient id="${uid}g3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${INK}" stop-opacity=".55"/><stop offset="1" stop-color="${INK}" stop-opacity=".92"/></linearGradient>
+    <radialGradient id="${uid}sun" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ec9d70"/><stop offset=".72" stop-color="#d0513f"/><stop offset="1" stop-color="#b4232a"/></radialGradient>
+  </defs>
+  <circle cx="${w*0.68}" cy="${h*0.27}" r="${h*0.155}" fill="url(#${uid}sun)"/>
+  <circle cx="${w*0.68}" cy="${h*0.27}" r="${h*0.19}" fill="none" stroke="#b4232a" stroke-opacity=".18" stroke-width="${h*0.012}"/>
+  <path fill="url(#${uid}g1)" d="M0,${h*0.60} L${w*0.11},${h*0.42} L${w*0.21},${h*0.54} L${w*0.33},${h*0.34} L${w*0.45},${h*0.50} L${w*0.57},${h*0.40} L${w*0.69},${h*0.57} L${w*0.83},${h*0.38} L${w},${h*0.52} L${w},${h} L0,${h} Z"/>
+  <path fill="url(#${uid}g2)" d="M0,${h*0.70} L${w*0.09},${h*0.58} L${w*0.2},${h*0.68} L${w*0.31},${h*0.52} L${w*0.44},${h*0.66} L${w*0.56},${h*0.55} L${w*0.68},${h*0.7} L${w*0.8},${h*0.56} L${w*0.92},${h*0.66} L${w},${h*0.6} L${w},${h} L0,${h} Z"/>
+  <rect x="0" y="${h*0.6}" width="${w}" height="${h*0.13}" fill="#f6f1e3" opacity=".5"/>
+  <path fill="url(#${uid}g3)" d="M0,${h*0.84} L${w*0.13},${h*0.72} L${w*0.28},${h*0.86} L${w*0.44},${h*0.7} L${w*0.6},${h*0.85} L${w*0.76},${h*0.73} L${w*0.9},${h*0.84} L${w},${h*0.78} L${w},${h} L0,${h} Z"/>
+  <g stroke="${INK}" stroke-width="2" fill="none" stroke-linecap="round" opacity=".65">
+    <path d="M${w*0.16},${h*0.2} q4,-4 8,0 q4,-4 8,0"/>
+    <path d="M${w*0.25},${h*0.13} q3.5,-3.5 7,0 q3.5,-3.5 7,0"/>
+    <path d="M${w*0.11},${h*0.1} q3,-3 6,0 q3,-3 6,0"/>
+  </g>
+  <g transform="translate(${w*0.5},${h*0.88})" fill="${INK}" opacity="${heroOpacity}">
+    <path d="M-17,-55 L0,-67 L17,-55 Q0,-49 -17,-55 Z"/>
+    <circle cx="0" cy="-49" r="4.6"/>
+    <path d="M0,-45 C-7,-41 -10,-28 -11,-16 L-18,-2 Q-11,3 -4,2 L-1,-6 L0,6 L1,-6 L5,2 Q12,1 17,-5 L10,-16 C9,-28 7,-41 0,-45 Z"/>
+    <rect x="7" y="-38" width="2.2" height="34" rx="1" transform="rotate(14 7 -38)"/>
+    <path d="M-3,6 L-1,14 M3,6 L1,14" stroke="${INK}" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <g stroke="${INK}" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".7">
+    <path d="M${w*0.07},${h} q3,-${h*0.09} -1,-${h*0.15}"/><ellipse cx="${w*0.066}" cy="${h*0.85}" rx="3.5" ry="6.5" fill="${INK}" opacity=".8" stroke="none" transform="rotate(-12 ${w*0.066} ${h*0.85})"/>
+    <path d="M${w*0.12},${h} q-2,-${h*0.08} 1,-${h*0.13}"/><ellipse cx="${w*0.128}" cy="${h*0.87}" rx="3" ry="5.5" fill="${INK}" opacity=".75" stroke="none" transform="rotate(10 ${w*0.128} ${h*0.87})"/>
+    <path d="M${w*0.92},${h} q-3,-${h*0.1} 1,-${h*0.16}"/><ellipse cx="${w*0.927}" cy="${h*0.84}" rx="3.5" ry="6.5" fill="${INK}" opacity=".8" stroke="none" transform="rotate(12 ${w*0.927} ${h*0.84})"/>
+  </g>
+</svg>`;
+}
+/* 门派水墨晕染底图 */
+function blobSVG(color, uid){
+  return `<svg viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block">
+  <path fill="${color}" opacity=".14" d="M150,16 C212,24 270,50 278,96 C286,140 248,176 190,184 C132,192 62,184 36,140 C12,100 30,54 76,32 C104,18 128,12 150,16 Z"/>
+  <path fill="${color}" opacity=".16" d="M162,28 C218,42 258,68 260,106 C262,142 226,166 178,170 C130,174 72,160 52,124 C34,90 56,50 98,36 C122,28 142,22 162,28 Z"/>
+</svg>`;
+}
+/* 剑形小图标 */
+function swordSVG(){
+  return `<svg width="18" height="26" viewBox="0 0 18 26" style="vertical-align:-5px">
+  <path d="M9,1 L11,4 L11,17 L7,17 L7,4 Z" fill="${INK}"/>
+  <rect x="4" y="17" width="10" height="2.2" rx="1" fill="#a67c3f"/>
+  <rect x="8" y="19" width="2" height="5" rx="1" fill="${INK}"/>
+  <circle cx="9" cy="25" r="1.4" fill="#b4232a"/>
+</svg>`;
+}
+/* 角落水墨小枝 */
+function sprigSVG(){
+  return `<svg width="72" height="56" viewBox="0 0 72 56" fill="none" style="opacity:.5">
+  <path d="M6,50 C18,40 24,28 30,12" stroke="#4f7a6a" stroke-width="1.6" stroke-linecap="round"/>
+  <path d="M20,38 q8,-2 14,-8 M24,28 q7,-4 12,-10" stroke="#4f7a6a" stroke-width="1.3" stroke-linecap="round"/>
+  <ellipse cx="38" cy="30" rx="3.4" ry="1.8" fill="#7ba98c" transform="rotate(-30 38 30)"/>
+  <ellipse cx="42" cy="16" rx="3.4" ry="1.8" fill="#7ba98c" transform="rotate(-42 42 16)"/>
+  <ellipse cx="30" cy="20" rx="3" ry="1.6" fill="#7ba98c" transform="rotate(-52 30 20)"/>
+</svg>`;
+}
+/* 页面底部远山条 */
+function footMtnSVG(){
+  return `<svg viewBox="0 0 620 74" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block">
+  <path d="M0,52 L70,32 L130,48 L200,26 L280,46 L360,30 L440,50 L520,34 L620,44 L620,74 L0,74 Z" fill="${INK}" opacity=".08"/>
+  <path d="M0,62 L90,46 L180,60 L290,42 L400,60 L500,48 L620,56 L620,74 L0,74 Z" fill="${INK}" opacity=".14"/>
+</svg>`;
+}
+
+/* ================= 状态 ================= */
+const SS = {
+  get:(k,d)=>{try{const v=sessionStorage.getItem(k);return v===null?d:JSON.parse(v);}catch(e){return d;}},
+  set:(k,v)=>{try{sessionStorage.setItem(k,JSON.stringify(v));}catch(e){}},
+  del:k=>{try{sessionStorage.removeItem(k);}catch(e){}}
+};
+let state = {
+  hash: SS.get("qs_hash", null),
+  remain: SS.get("qs_remain", 0),
+  answers: SS.get("qs_answers", []),
+  idx: SS.get("qs_idx", 0),
+  done: SS.get("qs_done", false)
+};
+function persist(){
+  SS.set("qs_hash",state.hash);SS.set("qs_remain",state.remain);
+  SS.set("qs_answers",state.answers);SS.set("qs_idx",state.idx);SS.set("qs_done",state.done);
+}
+const app = document.getElementById("app");
+
+/* ================= 工具 ================= */
+function toast(msg,ms){const t=document.getElementById("toast");t.innerHTML=msg;t.classList.add("show");
+  clearTimeout(t._tm);t._tm=setTimeout(()=>t.classList.remove("show"),ms||2200);}
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function fmtScience(s){return esc(s).replace(/【([^】]+)】/g,"<b>$1</b>");}
+async function sha256Hex(str){
+  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
+  return [...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,"0")).join("");
+}
+const normCode = c => String(c||"").toUpperCase().replace(/[\s-]/g,"");
+
+/* ================= 雷达图 ================= */
+function radarSVG(score, size){
+  size = size || 280;
+  const dims=[["火力",score.F],["内力",score.N],["理力",score.L],["诛心",score.Z]];
+  const cx=size/2+10, cy=size/2, R=size/2-40;
+  const max=Math.max(...dims.map(d=>d[1]),1);
+  const pt=vals=>vals.map((v,i)=>{const a=-Math.PI/2+i*Math.PI/2;
+    return `${(cx+R*v/max*Math.cos(a)).toFixed(1)},${(cy+R*v/max*Math.sin(a)).toFixed(1)}`;}).join(" ");
+  const rings=[0.25,0.5,0.75,1].map(f=>pt(dims.map(()=>f)));
+  const axis=dims.map((d,i)=>{const a=-Math.PI/2+i*Math.PI/2;
+    return `<line x1="${cx}" y1="${cy}" x2="${cx+R*Math.cos(a)}" y2="${cy+R*Math.sin(a)}" stroke="#e2d6b8" stroke-width="1"/>`;}).join("");
+  const labels=dims.map((d,i)=>{const a=-Math.PI/2+i*Math.PI/2;
+    const x=cx+(R+26)*Math.cos(a), y=cy+(R+26)*Math.sin(a);
+    return `<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#7a6c52" font-weight="700" font-family="'LXGW WenKai','STKaiti','KaiTi',serif">${d[0]} ${d[1]}</text>`;}).join("");
+  const poly=pt(dims.map(d=>d[1]));
+  return `<svg viewBox="0 0 ${size+20} ${size}" xmlns="http://www.w3.org/2000/svg" style="max-width:${size}px;width:100%">
+    ${rings.map(r=>`<polygon points="${r}" fill="none" stroke="#e2d6b8" stroke-width="1"/>`).join("")}
+    ${axis}${labels}
+    <polygon points="${poly}" fill="rgba(79,122,106,.24)" stroke="#4f7a6a" stroke-width="2"/>
+    ${dims.map((d,i)=>{const a=-Math.PI/2+i*Math.PI/2;
+      return `<circle cx="${(cx+R*d[1]/max*Math.cos(a)).toFixed(1)}" cy="${(cy+R*d[1]/max*Math.sin(a)).toFixed(1)}" r="3.6" fill="#4f7a6a"/>`;}).join("")}
+  </svg>`;
+}
+
+/* ================= 卡密验证（Supabase · SECURITY DEFINER 原子扣次） ================= */
+/* consume_password(p_hash) 返回值：-1=密令不存在  -2=次数已用完  >=0=本次扣次后剩余次数 */
+async function consumeHash(h){
+  const sb = getSB();
+  if(!sb) throw new Error("系统配置未完成");
+  const {data, error} = await sb.rpc("consume_password", { p_hash: h });
+  if(error) throw error;
+  const r = Number(data);
+  if(r === -1) return {ok:false, msg:"密令不正确，请检查后重试"};
+  if(r === -2) return {ok:false, msg:"这张密令的 7 次机会已经用完了"};
+  if(r < 0 || isNaN(r)) return {ok:false, msg:"密令验证失败，请稍后重试"};
+  return {ok:true, remain: r};
+}
+
+/* ================= 页面渲染 ================= */
+function showGate(errMsg){
+  app.innerHTML = `
+  <div class="card">
+    <svg class="illu-top" id="gateIllu" viewBox="0 0 620 220" preserveAspectRatio="xMidYMid slice"></svg>
+    <div class="gate-lead">未入江湖，先亮密令</div>
+    <div class="gate-box">
+      <div class="gate-title">入 派 密 令</div>
+      <div class="gate-tip">购买后获得的卡密（每张可测 7 次）</div>
+      <div class="pwd-row">
+        <input class="pwd" id="pwdInput" maxlength="14" placeholder="如 WU-A1B2-C3D4" autocomplete="off">
+        <button class="btn teal small" id="gateBtn" onclick="startWithPwd()">验 证</button>
+      </div>
+      <div class="gate-err" id="gateErr">${errMsg?esc(errMsg):""}</div>
+    </div>
+    <div class="gate-note">
+      · 密令不区分大小写，横杠、空格可不填<br>
+      · 每张密令可完成 7 次测试，次数云端全局计算<br>
+      · 测试完成可保存结果长图、复制链接分享好友
+    </div>
+  </div>`;
+  document.getElementById("gateIllu").innerHTML = heroSVG("gate", "#4f7a6a", 620, 220).replace(/^<svg[^>]*>|<\/svg>$/g,"");
+  const inp = document.getElementById("pwdInput");
+  inp.addEventListener("keydown", e=>{ if(e.key==="Enter") startWithPwd(); });
+  inp.focus();
+}
+async function startWithPwd(){
+  const btn=document.getElementById("gateBtn"), err=document.getElementById("gateErr");
+  const raw=document.getElementById("pwdInput").value;
+  if(!normCode(raw)){ err.textContent="请输入密令后再验证"; return; }
+  if(!getSB()){ err.textContent="系统维护中，请稍后重试"; return; }
+  btn.disabled=true; btn.innerHTML='<span class="spin"></span>验证中';
+  try{
+    const h = await sha256Hex(normCode(raw));
+    const r = await consumeHash(h);
+    if(!r.ok){ err.textContent=r.msg; btn.disabled=false; btn.textContent="验 证"; return; }
+    state.hash=h; state.remain=r.remain; state.answers=[]; state.idx=0; state.done=false; persist();
+    startQuiz();
+  }catch(e){
+    err.textContent="网络开小差了，请检查网络后重试";
+    btn.disabled=false; btn.textContent="验 证";
+  }
+}
+
+function startQuiz(){
+  state.done=false; persist();
+  renderQ();
+}
+function renderQ(){
+  const q=QUESTIONS[state.idx];
+  const sel=state.answers[state.idx];
+  app.innerHTML=`
+  <div class="card">
+    <div style="position:absolute;top:14px;right:16px">${sprigSVG()}</div>
+    <div class="quiz-top">
+      <button class="q-back" onclick="goBack()" ${state.idx===0?"disabled":""}>⟨ 上一题</button>
+      <span class="q-remain">本密令剩余 ${state.remain} 次</span>
+    </div>
+    <div class="progress"><i style="width:${(state.idx)/QUESTIONS.length*100}%"></i></div>
+    <div class="qnum">${swordSVG()} 第 ${String(state.idx+1).padStart(2,"0")} 式 · 共 ${QUESTIONS.length} 式</div>
+    <div class="qtext">${esc(q.q)}</div>
+    ${q.o.map((o,i)=>`<button class="opt ${sel===o[1]?"sel":""}" onclick="pick('${o[1]}')"><span class="k">${LETTERS[i]}</span>${esc(o[0])}</button>`).join("")}
+    <div class="illu-foot">${footMtnSVG()}</div>
+  </div>`;
+}
+function pick(d){
+  state.answers[state.idx]=d;
+  state.idx++;
+  persist();
+  if(state.idx<QUESTIONS.length) renderQ();
+  else showResult(false);
+}
+function goBack(){
+  if(state.idx>0){ state.idx--; persist(); renderQ(); }
+}
+
+/* ================= 结果 ================= */
+function computeScore(answers){
+  const s={F:0,N:0,L:0,Z:0};
+  answers.forEach(d=>{ if(s[d]!==undefined) s[d]++; });
+  return s;
+}
+function sectFor(score){
+  const high=Object.keys(score).filter(k=>score[k]>=7).sort().join("");
+  return SECTS[high]||SECTS[""];
+}
+function resultHTML(score, sect, shareMode){
+  const max=Math.max(...Object.values(score),1);
+  return `
+  <div class="card" id="resultCard">
+    <div class="res-hero" id="resHero">
+      <div style="position:absolute;inset:0;overflow:hidden">${blobSVG(sect.color,"rh")}</div>
+      <div style="position:absolute;right:18px;top:6px;width:120px;height:120px;opacity:.92">${heroSVG("rhm","#4f7a6a",140,120)}</div>
+      <div class="res-seal">武林认证</div>
+      <div class="res-top" style="position:relative">
+        <div class="res-tag">— 测 试 结 果 —</div>
+        <div class="res-sect" style="color:${sect.color}">${esc(sect.name)}</div>
+        <div class="res-master">${esc(sect.master)}</div>
+        <div class="res-slogan">${esc(sect.slogan)}</div>
+      </div>
+    </div>
+    <div class="radar-box">${radarSVG(score)}</div>
+    <div class="radar-cap">你的冲突内力四维图（满分 24）</div>
+    <div class="dims">
+      ${Object.entries(score).map(([k,v])=>`<div class="dimbar">
+        <div class="lab"><span>${DIMNAMES[k]}</span><span>${v}</span></div>
+        <div class="bar"><i style="width:${(v/max*100).toFixed(0)}%"></i></div></div>`).join("")}
+    </div>
+    <div class="sec"><h4>门派绝学 · 你的吵架招式</h4>
+      ${sect.moves.map(m=>`<div class="move"><b>${esc(m[0])}</b>：${esc(m[1])}</div>`).join("")}
+    </div>
+    <div class="sec"><h4>江湖宿命</h4><p>${esc(sect.kryptonite)}</p><p>${esc(sect.weakness)}</p></div>
+    <div class="sec"><h4>和解秘籍 · 理论依据</h4><div class="science">${fmtScience(sect.science)}</div></div>
+    <div class="sec"><h4>晒 图 文 案</h4><div class="sharetext">${esc(sect.share)}</div></div>
+    <div class="illu-foot">${footMtnSVG()}</div>
+  </div>
+  <div class="btnrow">
+    <button class="btn gold" onclick="savePoster()">保存结果长图</button>
+    <button class="btn teal" onclick="copyLink()">复制结果链接</button>
+    ${shareMode
+      ? `<button class="btn" onclick="location.href=location.origin+location.pathname">我也要测</button>`
+      : `<button class="btn" onclick="retest()">再测一次</button>`}
+    <button class="btn ghost" onclick="openPraise()">好评有礼</button>
+  </div>`;
+}
+function showResult(){
+  state.done=true; persist();
+  const score=computeScore(state.answers);
+  const sect=sectFor(score);
+  app.innerHTML=resultHTML(score,sect,false);
+  window.scrollTo(0,0);
+}
+function showShareResult(payload){
+  const score={F:payload.f|0,N:payload.n|0,L:payload.l|0,Z:payload.z|0};
+  const sect=sectFor(score);
+  app.innerHTML=resultHTML(score,sect,true);
+  document.getElementById("footnote").innerHTML="好友分享的测评结果 · <span style='color:#b4232a;cursor:pointer' onclick=\"location.href=location.origin+location.pathname\">点这里我也要测 →</span>";
+  window.scrollTo(0,0);
+}
+async function retest(){
+  if(!state.hash){ showGate(); return; }
+  toast('<span class="spin"></span>正在点验密令…', 5000);
+  try{
+    const r=await consumeHash(state.hash);
+    if(!r.ok){ state.hash=null; persist(); showGate(r.msg+"，请输入新密令"); return; }
+    state.remain=r.remain; state.answers=[]; state.idx=0; state.done=false; persist();
+    startQuiz();
+  }catch(e){ toast("网络开小差了，请稍后再试"); }
+}
+
+/* ================= 分享链接 ================= */
+function buildShareURL(){
+  const score=computeScore(state.answers);
+  const payload={f:score.F,n:score.N,l:score.L,z:score.Z};
+  const b64=btoa(unescape(encodeURIComponent(JSON.stringify(payload)))).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"");
+  return location.origin+location.pathname+"#r="+b64;
+}
+function parseShare(){
+  const m=location.hash.match(/^#r=([A-Za-z0-9_-]+)$/);
+  if(!m) return null;
+  try{
+    let b64=m[1].replace(/-/g,"+").replace(/_/g,"/");
+    while(b64.length%4) b64+="=";
+    return JSON.parse(decodeURIComponent(escape(atob(b64))));
+  }catch(e){ return null; }
+}
+async function copyLink(){
+  const url=buildShareURL();
+  let ok=false;
+  try{ await navigator.clipboard.writeText(url); ok=true; }catch(e){
+    try{
+      const ta=document.createElement("textarea");ta.value=url;ta.style.position="fixed";ta.style.opacity="0";
+      document.body.appendChild(ta);ta.select();ok=document.execCommand("copy");document.body.removeChild(ta);
+    }catch(e2){ok=false;}
+  }
+  toast(ok?"链接已复制，去粘贴给好友吧～":"复制失败，请手动复制地址栏链接");
+}
+
+/* ================= 保存长图 ================= */
+function posterHTML(score,sect){
+  const max=Math.max(...Object.values(score),1);
+  return `
+  <div style="position:relative;height:340px;overflow:hidden">
+    ${heroSVG("po", sect.color, 750, 340)}
+    <div style="position:absolute;left:0;right:0;top:26px;text-align:center">
+      <div style="font-family:'Zhi Mang Xing','STKaiti','KaiTi','楷体',serif;font-size:18px;color:#7a6c52;letter-spacing:7px">江 湖 争 霸 · 测 你 门 派</div>
+      <div style="font-family:'Ma Shan Zheng','STKaiti','KaiTi','楷体',serif;font-size:46px;color:#2e2a23;letter-spacing:14px;margin-top:4px">吵架门派测试</div>
+    </div>
+  </div>
+  <div style="text-align:center;padding:22px 30px 4px;position:relative">
+    <div style="font-family:'Zhi Mang Xing','STKaiti','KaiTi','楷体',serif;font-size:18px;color:#a67c3f;letter-spacing:7px">— 测 试 结 果 —</div>
+    <div style="font-family:'Ma Shan Zheng','STKaiti','KaiTi','楷体',serif;font-size:64px;color:${sect.color};letter-spacing:14px;font-weight:400;margin:8px 0 0">${esc(sect.name)}</div>
+    <div style="font-size:17px;color:#5f584a;letter-spacing:4px">${esc(sect.master)}</div>
+    <div style="display:inline-block;margin-top:12px;background:#b4232a;color:#fdf3dd;font-family:'Zhi Mang Xing','STKaiti','KaiTi','楷体',serif;font-size:20px;padding:9px 24px;border-radius:11px;letter-spacing:3px">${esc(sect.slogan)}</div>
+  </div>
+  <div style="text-align:center;padding:4px 20px">${radarSVG(score,300)}</div>
+  <div style="padding:4px 40px 10px">
+    ${Object.entries(score).map(([k,v])=>`<div style="margin:10px 0">
+      <div style="display:flex;justify-content:space-between;font-size:14.5px;color:#5f584a"><span>${DIMNAMES[k]}</span><span style="color:#4f7a6a;font-weight:700">${v}</span></div>
+      <div style="height:10px;background:#ece2c8;border-radius:99px;margin-top:4px"><div style="height:10px;width:${(v/max*100).toFixed(0)}%;background:#4f7a6a;border-radius:99px"></div></div>
+    </div>`).join("")}
+  </div>
+  <div style="padding:12px 40px 4px;text-align:center">${footMtnSVG()}</div>
+  <div style="padding:4px 40px">
+    <div style="font-family:'Zhi Mang Xing','STKaiti','KaiTi','楷体',serif;font-size:19px;color:#3a5563;letter-spacing:5px;margin-bottom:10px">◆ 门派绝学</div>
+    ${sect.moves.map(m=>`<div style="font-size:15px;color:#4a4438;line-height:1.95;margin-bottom:8px"><span style="color:#3d6457;font-weight:700">· ${esc(m[0])}</span> —— ${esc(m[1])}</div>`).join("")}
+    <div style="font-size:15px;color:#5f584a;line-height:1.95;margin-top:12px">${esc(sect.kryptonite)}<br>${esc(sect.weakness)}</div>
+  </div>
+  <div style="margin:20px 30px 0;background:#eef4ee;border:1px solid #c9ddc9;border-radius:12px;padding:16px 18px;font-size:14px;color:#3f5a44;line-height:1.95">${fmtScience(sect.science)}</div>
+  <div style="text-align:center;padding:26px 20px 30px">
+    <div style="display:inline-block;background:#b4232a;color:#fff;border-radius:8px;padding:8px 16px;font-family:'Ma Shan Zheng','STKaiti','KaiTi','楷体',serif;font-size:18px;letter-spacing:4px;transform:rotate(-4deg)">你也来测测？</div>
+    <div style="font-size:13px;color:#a3987f;margin-top:14px;letter-spacing:3px;font-family:'Zhi Mang Xing','STKaiti','KaiTi','楷体',serif">吵架门派测试 · 16 大门派 · 你是哪一派</div>
+  </div>`;
+}
+async function savePoster(){
+  if(typeof html2canvas==="undefined"){ toast("图片组件加载失败，请检查网络后重试"); return; }
+  toast('<span class="spin"></span>正在生成长图…',8000);
+  const score=computeScore(state.answers);
+  const sect=sectFor(score);
+  const poster=document.getElementById("poster");
+  poster.innerHTML=posterHTML(score,sect);
+  try{
+    const canvas=await html2canvas(poster,{scale:2,backgroundColor:"#f6f1e3",useCORS:true});
+    const url=canvas.toDataURL("image/png");
+    const img=document.getElementById("pmImg"); img.src=url;
+    const isMobile=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    document.getElementById("pmTip").innerHTML=isMobile
+      ? "👇 长按下方图片，保存到手机相册"
+      : "👇 已为你下载图片，也可右键另存";
+    document.getElementById("posterMask").classList.add("show");
+    if(!isMobile){
+      const a=document.createElement("a");
+      a.href=url; a.download="吵架门派测试结果.png"; a.click();
+    }
+  }catch(e){
+    toast("生成失败，请重试一次");
+  } finally {
+    poster.innerHTML="";
+  }
+}
+function closePoster(){ document.getElementById("posterMask").classList.remove("show"); }
+
+/* ================= 好评有礼 ================= */
+function openPraise(){ document.getElementById("praiseMask").classList.add("show"); }
+function closePraise(){ document.getElementById("praiseMask").classList.remove("show"); }
+document.getElementById("praiseMask").addEventListener("click",e=>{ if(e.target.id==="praiseMask") closePraise(); });
+
+/* ================= 启动路由 ================= */
+(function boot(){
+  document.getElementById("bannerMtn").innerHTML = bannerMtnSVG();
+  const shared=parseShare();
+  if(shared){
+    showShareResult(shared);
+    return;
+  }
+  if(state.hash && state.done){
+    showResult();
+    return;
+  }
+  if(state.hash && state.idx>0 && state.idx<QUESTIONS.length && state.answers.length>0){
+    startQuiz();
+    return;
+  }
+  if(state.hash && state.idx===0){
+    startQuiz();
+    return;
+  }
+  showGate();
+})();
+</script>
+</body>
+</html>
